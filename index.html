@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Encoding Site</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <main>
+            <textarea placeholder="nöibnnbe'ş foçöefs ifsf" required aria-label="input" id="inputF" class="input" oninput="generateF()"></textarea>
+            <textarea placeholder="ezşzg'r dmbnçdq gdqd" required aria-label="input" id="inputM" class="input" oninput="generateM()"></textarea>
+        </main>
+    </body>
+    <script>
+        const alphabets = "abcçdefghiıjklmnoöpqrsştuüvwxyz";
+
+        function generateF() {
+            const oldText = document.getElementById("inputF").value.toLowerCase();           
+            let newText = ""; // Initialize newText as an empty string
+            
+            for (let character of oldText) { // Loop over each character in oldText
+                if(character === " "){
+                    newText+=" ";
+                    continue;
+                }
+                let index = alphabets.indexOf(character) - 1; // Get the previous character's index
+                
+                if (index === -1) {
+                    index = alphabets.length - 1; // Wrap around to the end if index is negative
+                }
+                
+                newText += alphabets[index] || character; // Add the transformed character or original
+            }
+            
+            document.getElementById("inputM").value = newText;
+        }
+
+        function generateM() {
+            const oldText = document.getElementById("inputM").value.toLowerCase();
+            let newText = ""; // Initialize newText as an empty string
+
+            for (let character of oldText) { // Loop over each character in oldText
+                if (character === " ") {
+                    newText += " "; // Add space directly if character is a space
+                    continue;
+                }
+
+                let index = alphabets.indexOf(character) + 1;
+
+                if (index === 0) { // If character is not in alphabets, keep it as-is
+                    newText += character;
+                    continue;
+                }
+                if(index === alphabets.length){
+                    index = 0;
+                }
+                newText += alphabets[index]; // Add the transformed character or original
+
+            }
+
+            document.getElementById("inputF").value = newText;
+        }
+
+    </script>
+</html>

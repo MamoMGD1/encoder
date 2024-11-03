@@ -1,0 +1,89 @@
+/* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(gazoz.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 60%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 20px;
+    background: #ffffff45;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+main:hover {
+    transform: scale(1.02);
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    background: #f5f7fa;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.1);
+    resize: vertical;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    background: #ffffff;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+textarea::placeholder {
+    color: #a0a4a8;
+    font-style: italic;
+    font-size: 14px;
+}
+
+textarea:focus::placeholder {
+    color: transparent;
+}
+
+h1 {
+    font-size: 24px;
+    color: #4a90e2;
+    margin-bottom: 20px;
+    text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    main {
+        width: 95%;
+        padding: 20px;
+    }
+
+    textarea {
+        min-height: 100px;
+        font-size: 16px;
+    }
+}
