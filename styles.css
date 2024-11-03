@@ -13,7 +13,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(gazoz.jpg);
+    background: linear-gradient(#000000cc, #000000dd), url(2186.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -30,8 +30,8 @@ main {
     max-width: 400px;
     padding: 30px;
     border-radius: 20px;
-    background: #ffffff45;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    background: #ddddff22;
+    box-shadow: 0px 0px 10px #000;
     transition: transform 0.3s ease;
 }
 
@@ -46,8 +46,10 @@ textarea {
     border-radius: 12px;
     border: none;
     font-size: 18px;
-    color: #333;
-    background: #f5f7fa;
+    margin-bottom: -20px;
+    color: #fff;
+    font-family: garamond;
+    background: #00000099;
     box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.1);
     resize: vertical;
     transition: background 0.3s, box-shadow 0.3s;
@@ -55,13 +57,13 @@ textarea {
 
 textarea:focus {
     outline: none;
-    background: #ffffff;
+    background-color: #000;
     box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 textarea::placeholder {
-    color: #a0a4a8;
-    font-style: italic;
+    font-family: garamond;
+    color: #a0a4a8bb;
     font-size: 14px;
 }
 
@@ -86,4 +88,12 @@ h1 {
         min-height: 100px;
         font-size: 16px;
     }
+}
+.copy{
+    position: relative;
+    bottom: 30px;
+    left: 135px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #00000000;
 }
