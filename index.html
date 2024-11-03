@@ -8,12 +8,12 @@
     </head>
     <body>
         <main>
-            <textarea placeholder="nöibnnbe'ş foçöefs ifsf" required aria-label="input" id="inputF" class="input" oninput="generateF()"></textarea>
-            <textarea placeholder="ezşzg'r dmbnçdq gdqd" required aria-label="input" id="inputM" class="input" oninput="generateM()"></textarea>
+            <textarea placeholder="nöibnnbe'ş foçöefs ifsf" required aria-label="input" id="inputF" class="input" ondblclick="generateM()"></textarea>
+            <textarea placeholder="ezşzg'r dmbnçdq gdqd" required aria-label="input" id="inputM" class="input" ondblclick="generateF()"></textarea>
         </main>
     </body>
     <script>
-        const alphabets = "abcçdefghiıjklmnoöpqrsştuüvwxyz";
+        const alphabets = "abcçdefgğhiıjklmnoöpqrsştuüvwxyz";
 
         function generateF() {
             const oldText = document.getElementById("inputF").value.toLowerCase();           
