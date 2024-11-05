@@ -10,74 +10,98 @@
     </head>
     <body>
         <main>
-            <textarea placeholder="nöibnnbe'ş foçöefs ifsf" required aria-label="input" id="inputF" class="input" ondblclick="generateM()"></textarea>
-            <i class="fa-solid fa-copy copy" onclick="copyToClipboard('inputF')"></i>
-            <textarea placeholder="ezşzg'r dmbnçdq gdqd" required aria-label="input" id="inputM" class="input" ondblclick="generateF()"></textarea>
-            <i class="fa-solid fa-copy copy" onclick="copyToClipboard('inputM')"></i>
+            <textarea placeholder="nöibnnbe'ş foçöefs ifsf" required aria-label="input" id="input1" class="input" ondblclick="generate2()"></textarea>
+            <i class="fa-solid fa-copy copy" onclick="copyToClipboard('input1')"></i>
+            <textarea placeholder="ezşzg'r dmbnçdq gdqd" required aria-label="input" id="input2" class="input" ondblclick="generate1()"></textarea>
+            <i class="fa-solid fa-copy copy" onclick="copyToClipboard('input2')"></i>
         </main>
     </body>
     <script>
         const alphabets = "abcçdefgğhiıjklmnoöpqrsştuüvwxyz";
-
-        function generateF() {
-            const oldText = document.getElementById("inputF").value.toLowerCase();           
-            let newText = ""; // Initialize newText as an empty string
-            
-            for (let character of oldText) { // Loop over each character in oldText
-                if(character === " "){
-                    newText+=" ";
-                    continue;
+        const keyword = "playground";
+        let randomNumber = Math.floor(Math.random()*9) + 1;
+        function generate1(){
+            let input1, index = 0, codeNum = 0, alreadyEncoded = false, result = "";
+            input1 = document.getElementById("input1").value;
+            if(input1.trim()!==""){
+                alreadyEncoded = isLowercase(input1[0]) ? true : false;
+                if(alreadyEncoded){
+                    codeNum = keyword.indexOf(input1[0]);
+                    input1 = input1.slice(1);
+                }else{
+                    codeNum = randomNumber;
+                    input1 = input1.toLowerCase();
+                    result+=keyword[codeNum];
                 }
-                let index = alphabets.indexOf(character) - 1; // Get the previous character's index
-                
-                if (index === -1) {
-                    index = alphabets.length - 1; // Wrap around to the end if index is negative
+                for(let character of input1){
+                    if(character === " "){
+                        result+=" ";
+                        continue;
+                    }
+                    if(!alphabets.includes(character)){
+                        result+=character;
+                        continue;
+                    }
+                    index = alphabets.indexOf(character) - codeNum; // Get the previous character's index
+                    if (index < 0) {
+                        index = alphabets.length + index; // Wrap around to the end if index is negative
+                    }
+                    result += alphabets[index] || character; // Add the transformed character or original
                 }
-                
-                newText += alphabets[index] || character; // Add the transformed character or original
+                document.getElementById("input2").value = result;
             }
-            
-            document.getElementById("inputM").value = newText;
-            document.querySelectorAll(".copy")[1].style.color = "#ddddff99"; // Show for inputM
-            document.querySelectorAll(".copy")[0].style.color = "#00000000"; // Show for inputM
         }
-
-        function generateM() {
-            const oldText = document.getElementById("inputM").value.toLowerCase();
-            let newText = ""; // Initialize newText as an empty string
-
-            for (let character of oldText) { // Loop over each character in oldText
-                if (character === " ") {
-                    newText += " "; // Add space directly if character is a space
-                    continue;
+        function generate2(){
+            let input2, index = 0, codeNum = 0, alreadyEncoded = false, result = "";
+            input2 = document.getElementById("input2").value;
+            if(input2.trim()!==""){
+                alreadyEncoded = isLowercase(input2[0]) ? true : false;
+                if(alreadyEncoded){
+                    codeNum = keyword.indexOf(input2[0]);
+                    input2 = input2.slice(1);
+                }else{
+                    codeNum = randomNumber;
+                    input2 = input2.toLowerCase();
+                    result+=keyword[codeNum];
                 }
-
-                let index = alphabets.indexOf(character) + 1;
-
-                if (index === 0) { // If character is not in alphabets, keep it as-is
-                    newText += character;
-                    continue;
+                for(let character of input2){
+                    if(character === " "){
+                        result+=" ";
+                        continue;
+                    }
+                    if(!alphabets.includes(character)){
+                        result+=character;
+                        continue;
+                    }
+                    index = alphabets.indexOf(character) + codeNum; // Get the previous character's index
+                    if (index >= alphabets.length) {
+                        index -= alphabets.length; // Wrap around to the end if index is negative
+                    }
+                    result += alphabets[index] || character; // Add the transformed character or original
                 }
-                if(index === alphabets.length){
-                    index = 0;
-                }
-                newText += alphabets[index]; // Add the transformed character or original
-
+                document.getElementById("input1").value = result;
             }
-
-            document.getElementById("inputF").value = newText;
-            document.querySelectorAll(".copy")[0].style.color = '#ddddff99'; // Show for inputF
-            document.querySelectorAll(".copy")[1].style.color = '#00000000'; // Show for inputF
+            
         }
         function copyToClipboard(textareaId) {
             const textarea = document.getElementById(textareaId);
             textarea.select(); // Select the text
             document.execCommand("copy"); // Copy the selected text to clipboard
         }
+        function isLowercase(character){
+            return character === character.toLowerCase();
+        }
         document.addEventListener("click", function(event){
             if(!document.querySelector("main").contains(event.target)){
                 document.querySelectorAll(".copy")[0].style.color = "#00000000"; // Show for inputM
                 document.querySelectorAll(".copy")[1].style.color = "#00000000"; // Show for inputM
+            }
+        });
+        document.addEventListener("dblclick", function(event){
+            if(!document.querySelector("main").contains(event.target)){
+                document.querySelectorAll(".input").forEach(element => {
+                    element.value = "";
+                });
             }
         });
     </script>
