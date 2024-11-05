@@ -49,6 +49,8 @@
                     result += alphabets[index] || character; // Add the transformed character or original
                 }
                 document.getElementById("input2").value = result;
+                document.querySelectorAll(".copy")[1].style.color = "#ddddff99"; // Show for inputM
+                document.querySelectorAll(".copy")[0].style.color = "#00000000";
             }
         }
         function generate2(){
@@ -80,6 +82,8 @@
                     result += alphabets[index] || character; // Add the transformed character or original
                 }
                 document.getElementById("input1").value = result;
+                document.querySelectorAll(".copy")[1].style.color = "#00000000"; // Show for inputM
+                document.querySelectorAll(".copy")[0].style.color = "#ddddff99";
             }
             
         }
